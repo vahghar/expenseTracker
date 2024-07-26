@@ -48,7 +48,7 @@ const usersController = {
 
         //check if email is valid
         const user = await User.findOne({email});
-        if(user){
+        if(!user){
             throw new Error("invalid login credentials")
         }
 
@@ -71,10 +71,49 @@ const usersController = {
             email: user.email,
             username: user.username,
         })
-
-    })
+    }),
 
     //Profile
+    profile: asyncHandler (async(req,res)=>{
+        //find user
+        const user = await User.findById(req.user);
+        if(!user){
+            throw new Error("User not found");
+        }
+        //send response
+        res.json({username: user.username, email: user.email});
+    }),
+
+    //change user password
+    changeUserPassword: asyncHandler(async(req,res)=>{
+        const {newPassword} = req.body;
+
+        const user = await User.findById(req.user);
+        if(!user){
+            throw new Error("User not found");
+        }
+
+        //hash the new password before saving
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword,salt);
+        user.password = hashedPassword;
+        //Re save
+        await user.save();
+        //send response
+        res.json({message: "Password changed successfully"});
+    }),
+
+    //update user profile
+    updateUserProfile: asyncHandler(async(req,res)=>{
+        const {email,username} = req.body;
+        const updatedUser = await User.findByIdAndUpdate(req.user,{
+            username,
+            email,
+        },{
+            new: true,
+        })
+        res.json({message: "User Profile updated successfully"});
+    })
 };
 
 module.exports=usersController;
