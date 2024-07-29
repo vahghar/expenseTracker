@@ -1,9 +1,6 @@
 const express = require('express');
 const usersController = require('../controllers/userCtrl');
 const isAuthenticated = require('../middlewares/isAuth');
-const router = express.Router();
-
-
 const userRouter = express.Router();
 
 //register

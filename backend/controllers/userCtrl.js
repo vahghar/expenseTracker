@@ -87,12 +87,11 @@ const usersController = {
     //change user password
     changeUserPassword: asyncHandler(async(req,res)=>{
         const {newPassword} = req.body;
-
+        //find the user
         const user = await User.findById(req.user);
         if(!user){
             throw new Error("User not found");
         }
-
         //hash the new password before saving
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(newPassword,salt);
@@ -109,10 +108,11 @@ const usersController = {
         const updatedUser = await User.findByIdAndUpdate(req.user,{
             username,
             email,
-        },{
+        },
+        {
             new: true,
         })
-        res.json({message: "User Profile updated successfully"});
+        res.json({message: "User Profile updated successfully",updatedUser});
     })
 };
 
