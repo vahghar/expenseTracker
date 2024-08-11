@@ -75,7 +75,7 @@ const categoryController = {
         if(category && category.user.toString() === req.user.toString()){
             const defaultCategory = 'Uncategorized';
             await Transaction.updateMany(
-                {user: req.user, category: category._id},
+                {user: req.user, category: category.oldName},
                 {$set: {category:defaultCategory}}
             );
             //remove category

@@ -20,6 +20,7 @@ const validationSchema = Yup.object({
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirming your password is required"),
 });
+
 const RegistrationForm = () => {
   //Navigate
   const navigate = useNavigate();

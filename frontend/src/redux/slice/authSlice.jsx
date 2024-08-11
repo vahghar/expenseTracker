@@ -14,7 +14,7 @@ const authSlice = createSlice({
       //That will be given to react query
     },
     //Logout
-    logoutAction: (state, action) => {
+    logoutAction: (state) => {
       state.user = null;
     },
   },

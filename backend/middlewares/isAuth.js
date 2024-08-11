@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 
-const isAuthenticated = async(req,res,next) =>{
+const isAuthenticated = async(req,next) =>{
+
     //get the token from the header
     const headerObj = req.headers;
     const token = headerObj?.authorization?.split(' ')[1];
@@ -13,6 +14,7 @@ const isAuthenticated = async(req,res,next) =>{
             return decoded;
         }
     });
+    
     if(verifyToken){
         //save user req object
         req.user = verifyToken.id;
