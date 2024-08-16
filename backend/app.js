@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const userRouter = require("./routes/userRouter")
 const mongoose = require("mongoose");
 const errorHandler = require('./middlewares/errorHandlerMiddleware');
@@ -12,6 +13,11 @@ mongoose.connect("mongodb+srv://raghav77g:periodictable22g@mern-expense.cq7mm1g.
 const corsOptions = {
     origin: 'http://localhost:5173',
 };
+
+const corsOptions ={
+    origin: ["http://localhost:5173/"]
+}
+app.use(cors(corsOptions));
 
 //middlewares
 app.use(express.json());

@@ -50,6 +50,7 @@ const LoginForm = () => {
         .catch((e) => console.log(e));
     },
   });
+  
   //Redirect
   useEffect(() => {
     setTimeout(() => {
@@ -58,6 +59,7 @@ const LoginForm = () => {
       }
     }, 3000);
   }, [isPending, isError, error, isSuccess]);
+
   return (
     <form
       onSubmit={formik.handleSubmit}
@@ -79,6 +81,7 @@ const LoginForm = () => {
       {/* Input Field - Email */}
       <div className="relative">
         <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
+        {/*FaEnvelope used to get email and password/lock icons*/}
         <input
           id="email"
           type="email"

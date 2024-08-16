@@ -1,6 +1,5 @@
 import {
   FaMoneyBillWave,
-  FaRegCalendarAlt,
   FaSignInAlt,
   FaList,
   FaChartPie,
