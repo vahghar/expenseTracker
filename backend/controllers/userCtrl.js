@@ -10,7 +10,6 @@ const usersController = {
     //request is what the user is requesting from the application
     register: asyncHandler( async (req,res)=>{
         const {username,email,password} = req.body;
-
         //validate
         if(!username || !email || !password){
             throw new Error('please all fields are required');

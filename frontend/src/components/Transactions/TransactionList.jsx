@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { FaTrash, FaEdit } from "react-icons/fa";
-
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { listTransactionsAPI } from "../../services/transactions/transactionService";
 import { listCategoriesAPI } from "../../services/category/categoryService";

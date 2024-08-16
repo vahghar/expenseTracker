@@ -37,6 +37,7 @@ const AddCategory = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      console.log(values)
       mutateAsync(values)
         .then((data) => {
           navigate("/categories");
@@ -56,6 +57,7 @@ const AddCategory = () => {
         </h2>
         <p className="text-gray-600">Fill in the details below.</p>
       </div>
+
       {/* Display alert message */}
       {isError && (
         <AlertMessage
@@ -66,6 +68,7 @@ const AddCategory = () => {
           }
         />
       )}
+
       {isSuccess && (
         <AlertMessage
           type="success"

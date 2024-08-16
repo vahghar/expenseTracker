@@ -14,6 +14,7 @@ export const loginAPI = async ({ email, password }) => {
   //Return a promise
   return response.data;
 };
+
 //! register
 export const registerAPI = async ({ email, password, username }) => {
   const response = await axios.post(`${BASE_URL}/users/register`, {
@@ -24,6 +25,7 @@ export const registerAPI = async ({ email, password, username }) => {
   //Return a promise
   return response.data;
 };
+
 //! change password
 export const changePasswordAPI = async (newPassword) => {
   const response = await axios.put(
